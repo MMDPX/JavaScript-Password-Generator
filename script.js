@@ -98,13 +98,22 @@ function getPasswordOptions() {
 // Function for getting a random element from an array
 function getRandom(arr) {
   var allArrays = specialCharacters.concat(numericCharacters, lowerCasedCharacters, upperCasedCharacters);
-  var randomElement = allArrays[Math.floor(Math.random() * allArrays.length)];
-  console.log(randomElement);
+  var passwordLength = Math.floor(Math.random() * (128 - 8 + 1)) + 8;
+
+  var passwordOutput = []; 
+
+  for (var i = 0; i < passwordLength; i++) {
+    var randomElement = allArrays[Math.floor(Math.random() * allArrays.length)];
+    passwordOutput.push(randomElement);
+  }
+
+  return passwordOutput.join(""); // Return the generated password
 }
 
-// Function to generate password with user input
+//Function to generate password with user input
 function generatePassword() {
-
+  var generatedPassword = getRandom();
+  return generatedPassword 
 }
 
 // Get references to the #generate element
@@ -116,14 +125,8 @@ function writePassword() {
   var passwordText = document.querySelector('#password');
 
   passwordText.value = password;
+ 
 }
 
 // Add event listener to generate button
 generateBtn.addEventListener('click', writePassword);
-
-getPasswordOptions();
-getRandom();
-
-/*
-If you need to create a string from multiple characters later, use join("") to join them without commas.
-*/
