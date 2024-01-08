@@ -90,12 +90,16 @@ var upperCasedCharacters = [
 
 // Function to prompt user for password options
 function getPasswordOptions() {
-  
+  alert("The randomly generated password will consist of: ");
+  alert("At least 8, but not more than 128 characters.");
+  alert("Lowercase and uppercase, as well as numeric and special characters");
 }
 
 // Function for getting a random element from an array
 function getRandom(arr) {
-
+  var allArrays = specialCharacters.concat(numericCharacters, lowerCasedCharacters, upperCasedCharacters);
+  var randomElement = allArrays[Math.floor(Math.random() * allArrays.length)];
+  console.log(randomElement);
 }
 
 // Function to generate password with user input
@@ -118,7 +122,8 @@ function writePassword() {
 generateBtn.addEventListener('click', writePassword);
 
 getPasswordOptions();
+getRandom();
 
 /*
-
+If you need to create a string from multiple characters later, use join("") to join them without commas.
 */
