@@ -93,7 +93,10 @@ function getPasswordOptions() {
   alert("The randomly generated password will consist of: ");
   alert("At least 8, but not more than 128 characters.");
   alert("Lowercase and uppercase, as well as numeric and special characters");
+  alert("The source can be modified to change to criteria of generating the password");
 }
+
+getPasswordOptions();
 
 // Function for getting a random element from an array
 function getRandom(arr) {
@@ -102,12 +105,18 @@ function getRandom(arr) {
 
   var passwordOutput = []; 
 
+  //Validating each input to be included in the generated password
+  passwordOutput.push(specialCharacters[Math.floor(Math.random() * specialCharacters.length)]);
+  passwordOutput.push(numericCharacters[Math.floor(Math.random() * numericCharacters.length)]);
+  passwordOutput.push(lowerCasedCharacters[Math.floor(Math.random() * lowerCasedCharacters.length)]);
+  passwordOutput.push(upperCasedCharacters[Math.floor(Math.random() * upperCasedCharacters.length)]);
+
   for (var i = 0; i < passwordLength; i++) {
     var randomElement = allArrays[Math.floor(Math.random() * allArrays.length)];
     passwordOutput.push(randomElement);
   }
 
-  return passwordOutput.join(""); // Return the generated password
+  return passwordOutput.join("");
 }
 
 //Function to generate password with user input
